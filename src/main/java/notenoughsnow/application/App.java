@@ -21,7 +21,7 @@ public class App extends Application {
 		stage.setHeight(height);
 		stage.setResizable(false);
 		stage.show();
-		  
+		
 		
 	}
 	
