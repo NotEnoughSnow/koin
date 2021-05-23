@@ -18,9 +18,9 @@ public class Coin implements Comparable<Coin>{
 
 	
        public Coin(int i) {
-    	  heads_img =  new Image("coin1.png");
-    	  tails_img =  new Image("coin2.png");
-    	  selected_img =  new Image("coin3.png");
+    	  heads_img =  new Image("assets/coin1.png");
+    	  tails_img =  new Image("assets/coin2.png");
+    	  selected_img =  new Image("assets/coin3.png");
 
     	    img = new ImageView(heads_img); 
 
