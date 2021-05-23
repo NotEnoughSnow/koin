@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import notenoughsnow.application.App;
+import notenoughsnow.application.PresistanceController;
 import notenoughsnow.controller.Coin_controller;
 import notenoughsnow.controller.Turn_controller;
 import notenoughsnow.model.Model;
@@ -24,7 +25,7 @@ public class Game_screen implements Screen {
 	
 	private Group root;
 	
-	public Game_screen(Scene scene) {
+	public Game_screen(Scene scene,PresistanceController p_controller) {
 		
 
 		root = new Group();
@@ -58,7 +59,8 @@ public class Game_screen implements Screen {
            
             	
             	if(t_controller.end_turn(scene,player_turn_text)) {
-            		
+            		p_controller.save(Model.state.current_player);
+                    scene.setRoot(new End_screen(scene, p_controller).getRoot());
             		dispose();
 
             	}

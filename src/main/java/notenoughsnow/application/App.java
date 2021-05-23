@@ -30,7 +30,11 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import notenoughsnow.model.Model;
+import notenoughsnow.presistance.Game_result;
+import notenoughsnow.presistance.Presistance;
+import notenoughsnow.presistance.Session;
 import notenoughsnow.screen.Game_screen;
+import notenoughsnow.screen.Menu_screen;
 
 
 /**
@@ -49,6 +53,7 @@ public class App extends Application {
 		  
 		new Model();
 		
+		PresistanceController p_controller = new PresistanceController();
 
 		stage.setWidth(width);
 		stage.setHeight(height);
@@ -59,7 +64,7 @@ public class App extends Application {
 		Scene scene = new Scene(root,Color.BEIGE);
 		stage.setScene(scene);
 		
-		stage.getScene().setRoot(new Game_screen(scene).getRoot());
+		stage.getScene().setRoot(new Menu_screen(scene,p_controller).getRoot());
 		
 
 		stage.show();
