@@ -15,10 +15,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import notenoughsnow.application.App;
-import notenoughsnow.controller.Presistance_controller;
-import notenoughsnow.presistance.Game_result;
-import notenoughsnow.presistance.Player_score;
-import notenoughsnow.presistance.Session;
+import notenoughsnow.controller.Persistence_controller;
+import notenoughsnow.model.Player;
+import notenoughsnow.persistence.Game_result;
+import notenoughsnow.persistence.Player_score;
+import notenoughsnow.persistence.Session;
 import notenoughsnow.util.Screen;
 
 public class Score_screen implements Screen {
@@ -27,9 +28,11 @@ public class Score_screen implements Screen {
 
 
 	
-	public Score_screen(Scene scene, Presistance_controller p_controller) {
+	public Score_screen(Scene scene, Persistence_controller p_controller) {
 		root = new Group();
 		
+		//TODO separate components
+
 		Text welcome_text = new Text("Top 5 HighScores!");
 		welcome_text.setX(App.width/2-150);
 		welcome_text.setY(100);
@@ -50,7 +53,7 @@ public class Score_screen implements Screen {
 	    
 	    
 	    for (int i = 0;i < Math.min(scores.size(),5) ; i++) {
-	    	Text player_name = new Text(scores.get(i).player);
+	    	Text player_name = new Text(scores.get(i).player.name);
 			Text player_score = new Text(Integer.toString(scores.get(i).score));
 			player_name.setStyle("-fx-font: 24 arial;");
 			player_score.setStyle("-fx-font: 24 arial;");
@@ -102,7 +105,8 @@ public class Score_screen implements Screen {
 		ArrayList<Player_score> s = new ArrayList<Player_score>();
 		
 		for (Game_result x : Session.session.getGames()) {
-			Player_score val = new Player_score(x.getWinner());
+			//TODO allow player to be expendable by holding additional data
+			Player_score val = new Player_score(new Player(x.getWinner()));
 			
 			if(s.contains(val)) s.get(s.indexOf(val)).score++;
 			else s.add(val);

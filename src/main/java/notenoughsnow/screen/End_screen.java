@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import notenoughsnow.application.App;
-import notenoughsnow.controller.Presistance_controller;
+import notenoughsnow.controller.Persistence_controller;
 import notenoughsnow.model.Model;
 import notenoughsnow.util.Screen;
 
@@ -19,9 +19,10 @@ public class End_screen implements Screen {
 	private Group root;
  
 	
-	public End_screen(Scene scene, Presistance_controller p_controller) {
+	public End_screen(Scene scene, Persistence_controller p_controller) {
 		root = new Group();
-		
+
+		//TODO separate components
 		Text winner_text = new Text("Winner");
 		Text winner_name = new Text(Model.state.current_player.name);
 		winner_text.setStyle("-fx-font: 54 arial;");

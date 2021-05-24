@@ -1,4 +1,4 @@
-package notenoughsnow.presistance;
+package notenoughsnow.persistence;
 
 import java.util.List;
 
@@ -9,10 +9,18 @@ import jakarta.xml.bind.annotation.XmlElementWrapper;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
 
+
+/**
+ * 
+ * Provides storage to data used in {@link notenoughsnow.controller.Persistence_controller}.
+ * 
+ * @author notenoughsnow
+ *
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "data")
 @Data
-public class Presistance {
+public class Persistence {
 	
 	
 	@XmlElementWrapper(name = "games")

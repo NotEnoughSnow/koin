@@ -5,6 +5,14 @@ import notenoughsnow.model.Model;
 import notenoughsnow.model.Player;
 import notenoughsnow.state.Coin;
 
+
+/**
+ * 
+ * The controller responsible for turn related operations.
+ * 
+ * @author notenoughsnow
+ *
+ */
 public class Turn_controller {
 	 
 	
@@ -28,7 +36,6 @@ public class Turn_controller {
 			}  
 		
 		Model.turn.selected.clear();
-			swap_players(); 
 	  }
 	
 	

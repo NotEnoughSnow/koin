@@ -13,8 +13,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import notenoughsnow.application.App;
-import notenoughsnow.controller.Presistance_controller;
+import notenoughsnow.controller.Persistence_controller;
 import notenoughsnow.model.Model;
+import notenoughsnow.model.Player;
 import notenoughsnow.util.Screen;
 
 public class Menu_screen implements Screen {
@@ -23,9 +24,11 @@ public class Menu_screen implements Screen {
 
 
 	
-	public Menu_screen(Scene scene, Presistance_controller p_controller) {
+	public Menu_screen(Scene scene, Persistence_controller p_controller) {
 		root = new Group();
 		
+		//TODO separate components
+
 		Text welcome_text = new Text("Welcome! please select player names and start!");
 		welcome_text.setX(App.width/2-270);
 		welcome_text.setY(500);
@@ -68,8 +71,10 @@ public class Menu_screen implements Screen {
             @Override
 			public void handle(Event event) {
             	
-            	Model.player_one.name = player_one_field.getText();
-            	Model.player_two.name = player_two_field.getText();
+            	Model.player_one = new Player(player_one_field.getText());
+            	Model.player_two = new Player(player_two_field.getText());
+            	Model.state.current_player = Model.player_one;
+            	
         		scene.setRoot(new Game_screen(scene, p_controller).getRoot());
         		dispose();
           	  }

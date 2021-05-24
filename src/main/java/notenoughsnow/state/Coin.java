@@ -2,11 +2,17 @@ package notenoughsnow.state;
 
  import javafx.scene.image.ImageView;
 
+
  /**
-	 * Updates the graphical part of the coin flip.
-	 * 
-	 * @param coin the selected coin
-	 */
+  * 
+  * The coin state.
+  * Holds logical and graphical data.
+  * {@link #init_view()} must be called explicitly after object creation 
+  * to avoid NullPointerException.
+  * 
+  * @author notenoughsnow
+  *
+  */
 public class Coin implements Comparable<Coin>{
 
        public ImageView img;
@@ -24,7 +30,10 @@ public class Coin implements Comparable<Coin>{
  	      selected = false;
        }
        
-       public void init_view() {
+    /**
+     * Used to initialize the graphical part of the coin.
+     */
+    public void init_view() {
     	   img = new ImageView(Coin_view.heads_img);
        }
         
@@ -38,14 +47,20 @@ public class Coin implements Comparable<Coin>{
  		return 0;
 	}
 
-	
+	/**
+	 * Flips the imageViews of the given coin to the opposite state.
+	 */
 	public void flip() {
 		if(tails)
       	    img.setImage(Coin_view.heads_img);
   		  else
           	img.setImage(Coin_view.tails_img);		
 	}
-       
+	
+	
+	/**
+	 * Restores imageViews of given coin after un-selecting it.
+	 */
 	public void restore() {
 		if(tails)
       	    img.setImage(Coin_view.tails_img);

@@ -1,5 +1,7 @@
 package notenoughsnow.screen;
 
+import org.tinylog.Logger;
+
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -10,7 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import notenoughsnow.application.App;
 import notenoughsnow.controller.Coin_controller;
-import notenoughsnow.controller.Presistance_controller;
+import notenoughsnow.controller.Persistence_controller;
 import notenoughsnow.controller.Turn_controller;
 import notenoughsnow.model.Model;
 import notenoughsnow.state.Coin;
@@ -20,10 +22,17 @@ public class Game_screen implements Screen {
 	
 	private Group root;
 	
-	public Game_screen(Scene scene,Presistance_controller p_controller) {
+	public Game_screen(Scene scene,Persistence_controller p_controller) {
 		
 		root = new Group();
 		
+		Logger.info(Model.player_one.name);
+		Logger.info(Model.player_two.name);
+		Logger.info(Model.state.current_player.name);
+
+
+		//TODO separate components
+
 		Text player_turn_text = new Text("");
 		
 		player_turn_text.setX(App.width/2-150);
@@ -52,7 +61,6 @@ public class Game_screen implements Screen {
             @Override
 			public void handle(Event event) {
            
-            	t_controller.update_turn_text(player_turn_text);
             	
             	//TODO unit tests
             	t_controller.end_turn_view();
@@ -60,13 +68,17 @@ public class Game_screen implements Screen {
             	
             	next_turn_button.setDisable(true);
             	Model.state.moves_played++;
-            	
+            	 
             	//TODO unit tests
             	if(t_controller.check_game_goal()) {
             		p_controller.save();
                     scene.setRoot(new End_screen(scene, p_controller).getRoot());
             		dispose();
             	}
+            	
+    			t_controller.swap_players(); 
+            	t_controller.update_turn_text(player_turn_text);
+
             		  
           	  }
             

@@ -1,13 +1,27 @@
-package notenoughsnow.presistance;
+package notenoughsnow.persistence;
 
+import notenoughsnow.model.Player;
+
+/**
+ * 
+ * Hold data to be used for calculating high-scores.
+ * 
+ * 
+ * @author notenoughsnow
+ *
+ */
 public class Player_score implements Comparable<Player_score>{
 	
 	
 
-	public String player;
+	public Player player;
 	public int score;
-	
-	public Player_score(String player) {
+	/**
+	 * Creates a new player instance
+	 * 
+	 * @param player mainly through {@code player.name}
+	 */
+	public Player_score(Player player) {
 		this.player = player;
 		score = 1;
 	}

@@ -13,24 +13,36 @@ import org.tinylog.Logger;
 
 import jakarta.xml.bind.JAXBException;
 import notenoughsnow.model.Model;
-import notenoughsnow.model.Player;
-import notenoughsnow.presistance.Game_result;
-import notenoughsnow.presistance.Presistance;
-import notenoughsnow.presistance.Session;
+import notenoughsnow.persistence.Game_result;
+import notenoughsnow.persistence.Persistence;
+import notenoughsnow.persistence.Session;
 import notenoughsnow.util.JAXBHelper;
 
-public class Presistance_controller {
+/**
+ * The Controller responsible for Input/output.
+ * Uses JAXB to read/write session data in the for of an XML file.
+ * Stores and loads games played.
+ * 
+ * 
+ * @author notenoughsnow
+ *
+ */
+public class Persistence_controller {
  
-	
+	/**
+	 * 
+	 * Saves current {@link Session} to directory as {@code save.xml}
+	 * Stores number of moves, player names and winner name
+	 *  
+	 */
 	public void save() {
 		
-	      DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-		    LocalDateTime now = LocalDateTime.now();  
+	    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+		LocalDateTime now = LocalDateTime.now();  
 		
-		var data = new Presistance();
-
+		var data = new Persistence();
 		var games = new ArrayList<Game_result>();
-			var game = new Game_result();
+		  var game = new Game_result();
 
 				game.setDateTime(dtf.format(now));
 				game.setMoves(Model.state.moves_played);
@@ -53,25 +65,23 @@ public class Presistance_controller {
 	        JAXBHelper.toXML(data, new FileOutputStream("save.xml"));
 	       //JAXBHelper.toXML(data, new FileOutputStream("src/main/resource/save.xml"));
 
-			} catch (FileNotFoundException | JAXBException e) {
+			} catch (JAXBException | FileNotFoundException e) {
 				e.printStackTrace();
 			}
 	}
 	
+	/**
+	 * Creates a new file to the current directory with name {@code save.xml}.
+	 * Initializes a new empty instance of {@link Persistence}
+	 */
 	private static void create_empty_file() {
 		  
 		Logger.info("creating new file");
 	    
-	
-	var data = new Presistance();
-    
-
+	var data = new Persistence();
 	var games = new ArrayList<Game_result>();
-	
-      
       data.setGames(games);
        
-      
       try {
         JAXBHelper.toXML(data, System.out);
         JAXBHelper.toXML(data, new FileOutputStream("save.xml"));
@@ -82,9 +92,15 @@ public class Presistance_controller {
 		}
 	}
 	
-	public void load() {
-		
-		   
+	
+	/**
+	 * 
+	 * Retrieve {@link Session} from directory.
+	 * Creates a new file if needed.
+	 * @see #create_empty_file()
+	 *  
+	 */
+	public void load() { 
 		//ClassLoader classLoader = Controller.class.getClassLoader();
 		
 		try 
@@ -92,7 +108,7 @@ public class Presistance_controller {
 		{
 			InputStream xmlfile = new FileInputStream("save.xml");
 
-			Session.session = JAXBHelper.fromXML(Presistance.class, xmlfile);
+			Session.session = JAXBHelper.fromXML(Persistence.class, xmlfile);
 			
 			Logger.info("loaded session successfully");
 		    
@@ -103,7 +119,7 @@ public class Presistance_controller {
 		} catch (IOException | IllegalArgumentException e) {
 			  Logger.info("save file not found");
 			  create_empty_file();
-			  Session.session = new Presistance();
+			  Session.session = new Persistence();
 			  Session.session.setGames(new ArrayList<Game_result>());
 			  }
 	}

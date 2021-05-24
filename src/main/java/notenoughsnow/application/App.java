@@ -8,7 +8,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import notenoughsnow.controller.Presistance_controller;
+import notenoughsnow.controller.Persistence_controller;
 import notenoughsnow.model.Model;
 import notenoughsnow.screen.Menu_screen;
 import notenoughsnow.state.Coin_view;
@@ -32,7 +32,7 @@ public class App extends Application {
 		
 		Logger.info(Coin_view.heads_img);
 		
-		Presistance_controller p_controller = new Presistance_controller();
+		Persistence_controller p_controller = new Persistence_controller();
 		p_controller.load();
 
 		stage.setWidth(width);

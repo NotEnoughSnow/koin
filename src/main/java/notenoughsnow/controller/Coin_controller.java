@@ -55,9 +55,13 @@ public class Coin_controller {
   	  }		
 	}
 	 
-	
-	public void add_coin(Coin c) {
-		Model.state.coins.add(c);
+	/**
+	 * Adds the given coin to the state.
+	 * 
+	 * @param coin to be added
+	 */
+	public void add_coin(Coin coin) {
+		Model.state.coins.add(coin);
 	}
 	
 	

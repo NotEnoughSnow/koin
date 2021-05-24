@@ -12,7 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import notenoughsnow.application.App;
 import notenoughsnow.controller.Coin_controller;
-import notenoughsnow.controller.Presistance_controller;
+import notenoughsnow.controller.Persistence_controller;
 import notenoughsnow.controller.Turn_controller;
 import notenoughsnow.model.Model;
 import notenoughsnow.screen.Menu_screen;
@@ -48,7 +48,7 @@ class StateTest {
    	 	
    	 	Group root = new Group();
 		Scene scene = new Scene(root,Color.BEIGE);
-		menu = new Menu_screen(scene, new Presistance_controller());
+		menu = new Menu_screen(scene, new Persistence_controller());
  	
  	
 

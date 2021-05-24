@@ -13,11 +13,11 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import notenoughsnow.application.App;
 import notenoughsnow.controller.Coin_controller;
-import notenoughsnow.controller.Presistance_controller;
+import notenoughsnow.controller.Persistence_controller;
 import notenoughsnow.controller.Turn_controller;
 import notenoughsnow.model.Model;
-import notenoughsnow.presistance.Presistance;
-import notenoughsnow.presistance.Session;
+import notenoughsnow.persistence.Persistence;
+import notenoughsnow.persistence.Session;
 import notenoughsnow.screen.Menu_screen;
 import notenoughsnow.util.JAXBHelper;
 
@@ -38,10 +38,10 @@ class FileTest {
 		 
 	    	
 	    	assertThrows(JAXBException.class, () ->JAXBHelper.fromXML(getClass(), new FileInputStream("save.xml")));
-	    	assertThrows(IOException.class, () ->JAXBHelper.fromXML(Presistance.class, new FileInputStream("sample.xml")));
+	    	assertThrows(IOException.class, () ->JAXBHelper.fromXML(Persistence.class, new FileInputStream("sample.xml")));
 
 
-		    Presistance_controller p = new Presistance_controller();
+		    Persistence_controller p = new Persistence_controller();
 	    	p.load();
 	    	
 	    	assertNotNull(Session.session);
