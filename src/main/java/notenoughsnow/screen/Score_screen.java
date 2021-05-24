@@ -5,27 +5,18 @@ import java.util.Collections;
 
 import org.tinylog.Logger;
 
-import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import notenoughsnow.application.App;
 import notenoughsnow.controller.Player_score;
 import notenoughsnow.controller.Presistance_controller;
-import notenoughsnow.model.Model;
 import notenoughsnow.presistance.Game_result;
 import notenoughsnow.presistance.Session;
 import notenoughsnow.util.Screen;

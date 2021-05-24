@@ -1,7 +1,6 @@
 package notenoughsnow.state;
 
- import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+ import javafx.scene.image.ImageView;
 
 public class Coin implements Comparable<Coin>{
 

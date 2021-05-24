@@ -3,7 +3,6 @@ package notenoughsnow.screen;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,14 +11,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import notenoughsnow.application.App;
 import notenoughsnow.controller.Presistance_controller;
-import notenoughsnow.controller.Turn_controller;
 import notenoughsnow.model.Model;
-import notenoughsnow.state.Coin_view;
 import notenoughsnow.util.Screen;
 
 public class Menu_screen implements Screen {

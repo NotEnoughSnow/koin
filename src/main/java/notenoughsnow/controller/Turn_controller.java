@@ -1,10 +1,8 @@
 package notenoughsnow.controller;
 
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import notenoughsnow.model.Model;
-import notenoughsnow.model.Player;
 import notenoughsnow.state.Coin;
 import notenoughsnow.state.Coin_view;
 

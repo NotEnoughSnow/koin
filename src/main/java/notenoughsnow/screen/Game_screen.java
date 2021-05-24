@@ -1,9 +1,5 @@
 package notenoughsnow.screen;
 
-import java.util.Collections;
-
-import org.tinylog.Logger;
-
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -11,7 +7,6 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import notenoughsnow.application.App;
 import notenoughsnow.controller.Coin_controller;

@@ -40,7 +40,8 @@ public class JAXBHelper {
      * @return the resulting object
      * @throws JAXBException if any problem occurs during deserialization
      */
-    public static <T> T fromXML(Class<T> clazz, InputStream is) throws JAXBException {
+    @SuppressWarnings("unchecked")
+	public static <T> T fromXML(Class<T> clazz, InputStream is) throws JAXBException {
         try {
             JAXBContext context = JAXBContext.newInstance(clazz);
             Unmarshaller unmarshaller = context.createUnmarshaller();

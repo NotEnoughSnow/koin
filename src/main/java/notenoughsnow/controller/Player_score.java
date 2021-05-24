@@ -1,7 +1,5 @@
 package notenoughsnow.controller;
 
-import notenoughsnow.state.Coin;
-
 public class Player_score implements Comparable<Player_score>{
 	
 	
