@@ -44,7 +44,7 @@ class FileTest {
 		    Presistance_controller p = new Presistance_controller();
 	    	p.load();
 	    	
-	    	assertNotNull(Session.loaded_session);
+	    	assertNotNull(Session.session);
 	    	
 	    }
 

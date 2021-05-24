@@ -14,10 +14,7 @@ import lombok.Data;
 @Data
 public class Game_result {
 	
-	   @XmlAttribute
-	    private int id; 
-	   
-	   
+	 
 	    private String dateTime;
 	    private int moves;
 	    

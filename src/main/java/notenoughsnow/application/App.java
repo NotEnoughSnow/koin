@@ -33,6 +33,7 @@ public class App extends Application {
 		Logger.info(Coin_view.heads_img);
 		
 		Presistance_controller p_controller = new Presistance_controller();
+		p_controller.load();
 
 		stage.setWidth(width);
 		stage.setHeight(height);

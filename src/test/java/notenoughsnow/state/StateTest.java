@@ -42,9 +42,9 @@ class StateTest {
    	 	c_controller.add_coin(new Coin(4));
    	 	c_controller.add_coin(new Coin(5));
    	 	
-   	    c_controller.change_selected(Model.state.coins.get(1));
-   	 	c_controller.change_selected(Model.state.coins.get(4));
-   	 	c_controller.change_selected(Model.state.coins.get(3));
+   	    c_controller.flip_selected(Model.state.coins.get(1));
+   	 	c_controller.flip_selected(Model.state.coins.get(4));
+   	 	c_controller.flip_selected(Model.state.coins.get(3));
    	 	
    	 	Group root = new Group();
 		Scene scene = new Scene(root,Color.BEIGE);

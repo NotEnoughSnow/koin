@@ -1,5 +1,13 @@
 package notenoughsnow.model;
 
+
+
+/**
+ * Player objects that participate in the game.
+ * 
+ * @author notenoughsnow
+ *
+ */
 public class Player {
 	
 	

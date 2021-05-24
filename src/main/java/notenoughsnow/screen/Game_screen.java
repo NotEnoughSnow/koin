@@ -22,7 +22,6 @@ public class Game_screen implements Screen {
 	
 	public Game_screen(Scene scene,Presistance_controller p_controller) {
 		
-
 		root = new Group();
 		
 		Text player_turn_text = new Text("");
@@ -41,24 +40,32 @@ public class Game_screen implements Screen {
 		next_turn_button.setLayoutY(550);
 		
 		
-		   Turn_controller t_controller = new Turn_controller(player_turn_text);
-		   Coin_controller c_controller = new Coin_controller();
+		Turn_controller t_controller = new Turn_controller();
+		t_controller.update_turn_text(player_turn_text);
+       	      
+       	Coin_controller c_controller = new Coin_controller();
 		   
 		   
 		next_turn_button.setDisable(true);
 		next_turn_button.setOnMouseClicked(new EventHandler<Event>() {
 			
-			 
-
             @Override
 			public void handle(Event event) {
            
+            	t_controller.update_turn_text(player_turn_text);
             	
-            	if(t_controller.end_turn(scene,player_turn_text)) {
-            		p_controller.save(Model.state.current_player);
+            	//TODO unit tests
+            	t_controller.end_turn_view();
+            	t_controller.end_turn();
+            	
+            	next_turn_button.setDisable(true);
+            	Model.state.moves_played++;
+            	
+            	//TODO unit tests
+            	if(t_controller.check_game_goal()) {
+            		p_controller.save();
                     scene.setRoot(new End_screen(scene, p_controller).getRoot());
             		dispose();
-
             	}
             		  
           	  }
@@ -69,14 +76,16 @@ public class Game_screen implements Screen {
 	for(i = 0;i<10;i++) {
 			
 			Coin c = new Coin(i);
+			c.init_view();
 			
 			c.img.setOnMouseClicked(new EventHandler<Event>() {
 				
 	              @Override
 				public void handle(Event event) {
 	            
-	            	  c_controller.change_selected(c);
-	            	 
+	            	  c_controller.flip_selected_view(c);
+	            	  c_controller.flip_selected(c);
+
 	            	  next_turn_button.setDisable(!t_controller.check_validity());
 
 	              								} 
@@ -84,9 +93,7 @@ public class Game_screen implements Screen {
 			
 			c_controller.add_coin(c);
 		}
-	
-	
-	
+	 
 	
 	HBox hbox = new HBox();
     hbox.setPadding(new Insets(15, 64, 15, 64));

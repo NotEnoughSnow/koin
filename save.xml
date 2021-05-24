@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-    <games/>
+    <games>
+        <game>
+            <dateTime>2021/05/24 21:14:16</dateTime>
+            <moves>4</moves>
+            <players>
+                <player>player one</player>
+                <player>player two</player>
+            </players>
+            <winner>player one</winner>
+        </game>
+    </games>
 </data>

@@ -20,42 +20,36 @@ import notenoughsnow.presistance.Session;
 import notenoughsnow.util.JAXBHelper;
 
 public class Presistance_controller {
+ 
 	
-	public Presistance_controller() {
-		load();
-	}
-	
-	public void save(Player winner) {
+	public void save() {
 		
 	      DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
 		    LocalDateTime now = LocalDateTime.now();  
 		
 		var data = new Presistance();
-	    
 
 		var games = new ArrayList<Game_result>();
-			var game = new Game_result(); 
-				game.setId(293484);
+			var game = new Game_result();
 
 				game.setDateTime(dtf.format(now));
-				game.setMoves(5);
+				game.setMoves(Model.state.moves_played);
 
 				var players = new ArrayList<String>();
 					players.add(Model.player_one.name);
 					players.add(Model.player_two.name);
 				game.setPlayers(players);
 	    
-				game.setWinner(winner.name);
+				game.setWinner(Model.state.current_player.name);
 		
 	      games.add(game);
 	      
-	      Session.loaded_session.getGames().add(game);
-	      data.setGames(Session.loaded_session.getGames());
+	      Session.session.getGames().add(game);
 	      
-	      	
+	      data.setGames(Session.session.getGames());
 	      
 	      try {
-	        JAXBHelper.toXML(data, System.out);
+			Logger.info("saving session");
 	        JAXBHelper.toXML(data, new FileOutputStream("save.xml"));
 	       //JAXBHelper.toXML(data, new FileOutputStream("src/main/resource/save.xml"));
 
@@ -98,9 +92,9 @@ public class Presistance_controller {
 		{
 			InputStream xmlfile = new FileInputStream("save.xml");
 
-			Session.loaded_session = JAXBHelper.fromXML(Presistance.class, xmlfile);
+			Session.session = JAXBHelper.fromXML(Presistance.class, xmlfile);
 			
-			Logger.info(Session.loaded_session);
+			Logger.info("loaded session successfully");
 		    
 		   		     
 		}
@@ -109,8 +103,8 @@ public class Presistance_controller {
 		} catch (IOException | IllegalArgumentException e) {
 			  Logger.info("save file not found");
 			  create_empty_file();
-			  Session.loaded_session = new Presistance();
-			  Session.loaded_session.setGames(new ArrayList<Game_result>());
+			  Session.session = new Presistance();
+			  Session.session.setGames(new ArrayList<Game_result>());
 			  }
 	}
 

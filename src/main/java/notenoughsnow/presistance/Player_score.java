@@ -1,4 +1,4 @@
-package notenoughsnow.controller;
+package notenoughsnow.presistance;
 
 public class Player_score implements Comparable<Player_score>{
 	
@@ -30,7 +30,7 @@ public class Player_score implements Comparable<Player_score>{
 		if(this.score>o.score)
 			return -1;
 		if(this.score<o.score)
-			return 11;
+			return 1;
 		return 0;
 	}
    

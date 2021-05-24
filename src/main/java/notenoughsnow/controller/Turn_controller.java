@@ -1,19 +1,12 @@
 package notenoughsnow.controller;
 
-import javafx.scene.Scene;
 import javafx.scene.text.Text;
 import notenoughsnow.model.Model;
+import notenoughsnow.model.Player;
 import notenoughsnow.state.Coin;
-import notenoughsnow.state.Coin_view;
 
 public class Turn_controller {
-	
-	public Turn_controller(Text player_turn_text) {
-		update_turn_text(player_turn_text);
-	}
-	
-	public Turn_controller() {
-	}
+	 
 	
 	public void update_turn_text(Text player_turn_text) {
 		
@@ -21,61 +14,76 @@ public class Turn_controller {
 
 	}
 	
-	public boolean end_turn(Scene scene,Text player_text) {
+	/**
+	 * Ends the turn by flipping selected coins.
+	 * Acts as the logical part of the operation.
+	 * @see #end_turn_view()
+	 */
+	public void end_turn() {
 		
-		boolean goal = true;
-		 
-			for(Coin c:Model.state.coins) {
+		for(Coin c:Model.turn.selected) {
 				
-				if(c.selected) {
-					if(c.tails) {
-						c.img.setImage(Coin_view.heads_img);
-						c.tails = false;
-					}
-					else {
-						c.img.setImage(Coin_view.tails_img);
-						c.tails = true;
-				    	}  
-					    
-					c.selected = false;
-					Model.turn.selected.clear();
-				}
-				
-				if (!c.tails) goal = false; 
-				
-			} 
-			
-			if(goal) {
-				return end_game(scene);
-			}
-			
-			
-			if(Model.state.current_player == Model.player_one) {
-				Model.state.current_player = Model.player_two;
-			}
-			else {
-				Model.state.current_player = Model.player_one;
-
-			}
-				update_turn_text(player_text);
-				return false;
+		c.tails = !c.tails;
+		c.selected = false;
+			}  
+		
+		Model.turn.selected.clear();
+			swap_players(); 
 	  }
+	
+	
+	/**
+	 * Ends the turn by flipping selected coins.
+	 * Acts as the graphical part of the operation.
+	 * Must be called first.
+	 * @see #end_turn()
+	 */
+	public void end_turn_view() {
+
+			for(Coin c:Model.turn.selected)
+					c.flip();
+	     }
+	
+	/**
+	 * Method to check game conclusion.
+	 * @return True if the game is over, False if not.
+	 */
+	public boolean check_game_goal() {
+		
+		for(Coin c:Model.state.coins) {
+			if (!c.tails) return false; 
+		}
+		return true;
+	}
+	
+	/**
+	 * swap current {@link Player} by another on turn-end.
+	 */
+	public void swap_players() {
+		
+		if(Model.state.current_player == Model.player_one) {
+			Model.state.current_player = Model.player_two;
+		}
+		else {
+			Model.state.current_player = Model.player_one; 
+		}
+	}
 	
 
 	 
-	
+	/**
+	 * Checks the turn validity after each selected {@link Coin}.
+	 * @return True if the turn is valid, False if not.
+
+	 */
 	public boolean check_validity() {
 		
-		if(Model.turn.selected.size()>0 && Model.turn.selected.size() < 4 && !Model.turn.selected.get(Model.turn.selected.size()-1).tails)  
-			 
-			return true;
-			
+		if(Model.turn.selected.size()>0 
+				&& Model.turn.selected.size() < 4 
+				&& !Model.turn.selected.get(Model.turn.selected.size()-1).tails)  
+			    return true;
+		
 		return false;
 		}
 	
-	
-	public static boolean end_game(Scene scene) { 
-		return true;
-	}
-
 }

@@ -6,34 +6,60 @@ import notenoughsnow.model.Model;
 import notenoughsnow.state.Coin;
 import notenoughsnow.state.Coin_view;
 
+/**
+ * 
+ * Class responsible for managing graphical and logical coin operations.
+ * 
+ * 
+ * @author notenoughsnow
+ *
+ */
 public class Coin_controller {
 
-	
-	public void change_selected(Coin c) {
-		if(!c.selected) { 
-      	  c.selected = true; 
-      	  
-      	  c.img.setImage(Coin_view.selected_img);
-      	  
-      	  Model.turn.selected.add(c);
+	/**
+	 * Updates the logical part of the {@link Coin} flip.
+	 * 
+	 * @see #flip_selected_view(Coin)
+	 * @param coin the selected coin
+	 */
+	public void flip_selected(Coin coin) {
+		
+		if(!coin.selected) { 
+      	  coin.selected = true;
+      	  Model.turn.selected.add(coin);
       	  Collections.sort(Model.turn.selected); 
+      	  
    	  } 
   	  else {
-  		  c.selected = false; 
-  		  
-  		  if(c.tails)
-      	    c.img.setImage(Coin_view.tails_img);
-  		  else
-          	c.img.setImage(Coin_view.heads_img);
-  		  
-      	  Model.turn.selected.remove(Model.turn.selected.indexOf(c));
-      	  
-  		  
+  		  coin.selected = false; 
+      	  Model.turn.selected.remove(Model.turn.selected.indexOf(coin));
+      	   
   	  }		
 	}
+	
+	/**
+	 * Updates the graphical part of the {@link Coin} flip.
+	 * Must be called first.
+	 * 
+	 * @see #flip_selected(Coin)
+	 * @param coin the selected coin
+	 */
+	public void flip_selected_view(Coin coin) {
+		
+		if(!coin.selected) {
+      	  coin.img.setImage(Coin_view.selected_img);
+      	  
+   	  } 
+  	  else {
+  		  coin.restore();
+  	  }		
+	}
+	 
 	
 	public void add_coin(Coin c) {
 		Model.state.coins.add(c);
 	}
+	
+	
 
 }

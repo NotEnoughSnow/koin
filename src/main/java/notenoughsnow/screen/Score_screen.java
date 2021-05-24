@@ -15,9 +15,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import notenoughsnow.application.App;
-import notenoughsnow.controller.Player_score;
 import notenoughsnow.controller.Presistance_controller;
 import notenoughsnow.presistance.Game_result;
+import notenoughsnow.presistance.Player_score;
 import notenoughsnow.presistance.Session;
 import notenoughsnow.util.Screen;
 
@@ -48,7 +48,8 @@ public class Score_screen implements Screen {
 	    vbox.setTranslateY(150);
 	    vbox.setSpacing(25);
 	    
-	    for (int i = 0;i < 5 ; i++) {
+	    
+	    for (int i = 0;i < Math.min(scores.size(),5) ; i++) {
 	    	Text player_name = new Text(scores.get(i).player);
 			Text player_score = new Text(Integer.toString(scores.get(i).score));
 			player_name.setStyle("-fx-font: 24 arial;");
@@ -100,7 +101,7 @@ public class Score_screen implements Screen {
 	private ArrayList<Player_score> get_score() {
 		ArrayList<Player_score> s = new ArrayList<Player_score>();
 		
-		for (Game_result x : Session.loaded_session.getGames()) {
+		for (Game_result x : Session.session.getGames()) {
 			Player_score val = new Player_score(x.getWinner());
 			
 			if(s.contains(val)) s.get(s.indexOf(val)).score++;
