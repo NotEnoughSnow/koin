@@ -32,9 +32,10 @@ public class Game_screen implements Screen {
 		
 		Text player_turn_text = new Text("");
 		
-		player_turn_text.setX(App.width/2-50);
+		player_turn_text.setX(App.width/2-150);
 		player_turn_text.setY(100);
-		
+		player_turn_text.setStyle("-fx-font: 25 arial;");
+
 		
 		Button next_turn_button = new Button("end turn");
 
@@ -70,7 +71,7 @@ public class Game_screen implements Screen {
                                                          });
 		
 		int i;
-	for(i = 0;i<12;i++) {
+	for(i = 0;i<10;i++) {
 			
 			Coin c = new Coin(i);
 			

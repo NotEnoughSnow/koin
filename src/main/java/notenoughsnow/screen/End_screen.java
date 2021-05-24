@@ -2,9 +2,12 @@ package notenoughsnow.screen;
 
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import notenoughsnow.application.App;
 import notenoughsnow.controller.Presistance_controller;
@@ -14,21 +17,27 @@ import notenoughsnow.util.Screen;
 public class End_screen implements Screen {
 	
 	private Group root;
-	
-	
-	private Button start_game_button;
-	private Text winner_text;
-
+ 
 	
 	public End_screen(Scene scene, Presistance_controller p_controller) {
 		root = new Group();
 		
-		winner_text = new Text("Winner\n"+Model.state.current_player.name);
-		winner_text.setX(App.width/2-50);
-		winner_text.setY(100);
+		Text winner_text = new Text("Winner");
+		Text winner_name = new Text(Model.state.current_player.name);
+		winner_text.setStyle("-fx-font: 54 arial;");
 		
+		winner_name.setStyle("-fx-font: 62 arial;");
+		winner_name.setFill(Color.PURPLE); 
 		
-		start_game_button = new Button("return to main menu");
+		VBox vbox = new VBox(winner_text,winner_name);
+
+		vbox.setTranslateX(400);
+		vbox.setTranslateY(300);
+		vbox.setAlignment(Pos.CENTER);
+
+
+		
+		Button start_game_button = new Button("Return to Main Menu");
 
 		start_game_button.setPrefWidth(150);
 		start_game_button.setPrefHeight(70);
@@ -50,7 +59,7 @@ public class End_screen implements Screen {
 		
 		
 		root.getChildren().add(start_game_button);
-		root.getChildren().add(winner_text);
+		root.getChildren().add(vbox);
 		
 
 	}

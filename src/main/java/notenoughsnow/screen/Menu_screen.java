@@ -1,81 +1,132 @@
 package notenoughsnow.screen;
 
+import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import notenoughsnow.application.App;
 import notenoughsnow.controller.Presistance_controller;
 import notenoughsnow.controller.Turn_controller;
+import notenoughsnow.model.Model;
+import notenoughsnow.state.Coin_view;
 import notenoughsnow.util.Screen;
 
 public class Menu_screen implements Screen {
 	
 	private Group root;
-	
-	
-	private Button start_game_button;
-	private Button score_button;
-	private Text welcome_text = new Text("Welcome!");
+
 
 	
 	public Menu_screen(Scene scene, Presistance_controller p_controller) {
 		root = new Group();
 		
-		welcome_text.setX(App.width/2-50);
-		welcome_text.setY(100);
-		
-		
-		start_game_button = new Button("start game");
+		Text welcome_text = new Text("Welcome! please select player names and start!");
+		welcome_text.setX(App.width/2-270);
+		welcome_text.setY(500);
+		welcome_text.setStyle("-fx-font: 25 arial;");
 
-		start_game_button.setPrefWidth(150);
-		start_game_button.setPrefHeight(70);
 		
-		start_game_button.setLayoutX(App.width/2-start_game_button.getPrefWidth()/2);
-		start_game_button.setLayoutY(550);
+	    
 		
+	    TextField player_one_field = new TextField();  
+	    player_one_field.setText("player one");
+	    TextField player_two_field = new TextField();  
+	    player_two_field.setText("player two");
+
+	    HBox player_fields = new HBox();
+	    
+	    player_fields.setTranslateY(540);
+	    player_fields.setTranslateX(340);
+	    player_fields.setSpacing(100);
+	    
+	    player_fields.getChildren().add(player_one_field);
+	    player_fields.getChildren().add(player_two_field);
+
+	
 		
+		ImageView coin = new ImageView(new Image("assets/coin.png")); 
+		coin.setTranslateX(800);
+		coin.setTranslateY(200);
+		
+		ImageView logo = new ImageView(new Image("assets/logo.png")); 
+		logo.setTranslateX(450);
+		logo.setTranslateY(100);
+
+		Button start_game_button = new Button("Start game");
+		Button exit_button = new Button("Exit game");
+		Button score_button = new Button("High Scores");
+
 
 		start_game_button.setOnMouseClicked(new EventHandler<Event>() {
 			
             @Override
 			public void handle(Event event) {
             	
-            	
+            	Model.player_one.name = player_one_field.getText();
+            	Model.player_two.name = player_two_field.getText();
         		scene.setRoot(new Game_screen(scene, p_controller).getRoot());
         		dispose();
           	  }
             
                                                          });
-		
-		
-		score_button = new Button("High Scores");
-
-		score_button.setPrefWidth(150);
-		score_button.setPrefHeight(70);
-		
-		score_button.setLayoutX(App.width/2-score_button.getPrefWidth()/2);
-		score_button.setLayoutY(550+200);
-
 		score_button.setOnMouseClicked(new EventHandler<Event>() {
 			
             @Override
 			public void handle(Event event) {
             	
-            	
-        		scene.setRoot(new Score_screen().getRoot());
+            	 
+        		scene.setRoot(new Score_screen(scene, p_controller).getRoot());
         		dispose();
           	  }
             
                                                          });
+		exit_button.setOnMouseClicked(new EventHandler<Event>() {
+			
+            @Override
+			public void handle(Event event) {
+            	
+            	 
+            	Platform.exit();
+                System.exit(0);
+          	  }
+            
+                                                         });
+		
+		VBox vbox = new VBox();
+		  
+		vbox.setTranslateX(App.width/2-400);
+		vbox.setTranslateY(300);
+		vbox.setScaleX(2);
+		vbox.setScaleY(2);
 		
 		
-		root.getChildren().add(start_game_button);
+		
+		
+
+
+        vbox.getChildren().add(start_game_button);
+        vbox.getChildren().add(score_button);
+        vbox.getChildren().add(exit_button);
+		
+		
+		
+		root.getChildren().add(vbox);
 		root.getChildren().add(welcome_text);
+		root.getChildren().add(coin);
+		root.getChildren().add(logo);
+		root.getChildren().add(player_fields);
+
 		
 
 	}
