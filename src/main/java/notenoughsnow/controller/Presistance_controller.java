@@ -1,4 +1,4 @@
-package notenoughsnow.application;
+package notenoughsnow.controller;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -19,9 +19,9 @@ import notenoughsnow.presistance.Presistance;
 import notenoughsnow.presistance.Session;
 import notenoughsnow.util.JAXBHelper;
 
-public class PresistanceController {
+public class Presistance_controller {
 	
-	public PresistanceController() {
+	public Presistance_controller() {
 		load();
 	}
 	
@@ -88,7 +88,7 @@ public class PresistanceController {
 		}
 	}
 	
-	public static void load() {
+	public void load() {
 		
 		   
 		//ClassLoader classLoader = Controller.class.getClassLoader();

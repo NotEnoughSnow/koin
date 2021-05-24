@@ -29,12 +29,14 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import notenoughsnow.controller.Presistance_controller;
 import notenoughsnow.model.Model;
 import notenoughsnow.presistance.Game_result;
 import notenoughsnow.presistance.Presistance;
 import notenoughsnow.presistance.Session;
 import notenoughsnow.screen.Game_screen;
 import notenoughsnow.screen.Menu_screen;
+import notenoughsnow.state.Coin_view;
 
 
 /**
@@ -50,20 +52,22 @@ public class App extends Application {
 	@Override
 	public void start(Stage stage) {
 		
-		  
+		new Coin_view();
 		new Model();
 		
-		PresistanceController p_controller = new PresistanceController();
+		Logger.info(Coin_view.heads_img);
+		
+		Presistance_controller p_controller = new Presistance_controller();
 
 		stage.setWidth(width);
 		stage.setHeight(height);
 		stage.setResizable(false);
-		// sets the current screen
 		
 		Group root = new Group();
 		Scene scene = new Scene(root,Color.BEIGE);
 		stage.setScene(scene);
 		
+		// sets the current screen
 		stage.getScene().setRoot(new Menu_screen(scene,p_controller).getRoot());
 		
 

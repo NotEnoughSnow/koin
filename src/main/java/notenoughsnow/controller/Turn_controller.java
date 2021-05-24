@@ -6,11 +6,15 @@ import javafx.scene.text.Text;
 import notenoughsnow.model.Model;
 import notenoughsnow.model.Player;
 import notenoughsnow.state.Coin;
+import notenoughsnow.state.Coin_view;
 
 public class Turn_controller {
 	
 	public Turn_controller(Text player_turn_text) {
 		update_turn_text(player_turn_text);
+	}
+	
+	public Turn_controller() {
 	}
 	
 	public void update_turn_text(Text player_turn_text) {
@@ -27,11 +31,11 @@ public class Turn_controller {
 				
 				if(c.selected) {
 					if(c.tails) {
-						c.img.setImage(c.heads_img);
+						c.img.setImage(Coin_view.heads_img);
 						c.tails = false;
 					}
 					else {
-						c.img.setImage(c.tails_img);
+						c.img.setImage(Coin_view.tails_img);
 						c.tails = true;
 				    	}  
 					    
@@ -60,21 +64,14 @@ public class Turn_controller {
 	  }
 	
 
-	public void validate_turn(Button next_turn_button) {
-
-	  if (check_validity()) next_turn_button.setDisable(false);
-	  else 
-		next_turn_button.setDisable(true);
-		}
+	 
 	
-	public static  boolean check_validity() {
+	public boolean check_validity() {
 		
 		if(Model.turn.selected.size()>0 && Model.turn.selected.size() < 4 && !Model.turn.selected.get(Model.turn.selected.size()-1).tails)  
 			 
 			return true;
 			
-				
-		
 		return false;
 		}
 	

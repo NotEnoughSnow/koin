@@ -9,7 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import notenoughsnow.application.App;
-import notenoughsnow.application.PresistanceController;
+import notenoughsnow.controller.Presistance_controller;
 import notenoughsnow.controller.Turn_controller;
 import notenoughsnow.util.Screen;
 
@@ -23,7 +23,7 @@ public class Menu_screen implements Screen {
 	private Text welcome_text = new Text("Welcome!");
 
 	
-	public Menu_screen(Scene scene, PresistanceController p_controller) {
+	public Menu_screen(Scene scene, Presistance_controller p_controller) {
 		root = new Group();
 		
 		welcome_text.setX(App.width/2-50);

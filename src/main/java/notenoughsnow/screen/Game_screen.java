@@ -14,8 +14,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import notenoughsnow.application.App;
-import notenoughsnow.application.PresistanceController;
 import notenoughsnow.controller.Coin_controller;
+import notenoughsnow.controller.Presistance_controller;
 import notenoughsnow.controller.Turn_controller;
 import notenoughsnow.model.Model;
 import notenoughsnow.state.Coin;
@@ -25,7 +25,7 @@ public class Game_screen implements Screen {
 	
 	private Group root;
 	
-	public Game_screen(Scene scene,PresistanceController p_controller) {
+	public Game_screen(Scene scene,Presistance_controller p_controller) {
 		
 
 		root = new Group();
@@ -73,7 +73,6 @@ public class Game_screen implements Screen {
 	for(i = 0;i<12;i++) {
 			
 			Coin c = new Coin(i);
-			c.position = i;
 			
 			c.img.setOnMouseClicked(new EventHandler<Event>() {
 				
@@ -81,7 +80,8 @@ public class Game_screen implements Screen {
 				public void handle(Event event) {
 	            
 	            	  c_controller.change_selected(c);
-	            	  t_controller.validate_turn(next_turn_button);
+	            	 
+	            	  next_turn_button.setDisable(!t_controller.check_validity());
 
 	              								} 
 	                                                           });

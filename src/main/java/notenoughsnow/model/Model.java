@@ -16,6 +16,7 @@ public class Model {
 	public Model() {
 		
 		
+		
 		state = new Game_state();
 		turn = new Turn_state();
 		

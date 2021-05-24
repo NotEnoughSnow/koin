@@ -10,8 +10,6 @@ public class Turn_state {
 	
 	public ArrayList<Coin> selected;
 	
-	
-	
 	public Turn_state() {
 		selected = new ArrayList<Coin>();
 		

@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import notenoughsnow.application.App;
-import notenoughsnow.application.PresistanceController;
+import notenoughsnow.controller.Presistance_controller;
 import notenoughsnow.model.Model;
 import notenoughsnow.util.Screen;
 
@@ -20,7 +20,7 @@ public class End_screen implements Screen {
 	private Text winner_text;
 
 	
-	public End_screen(Scene scene, PresistanceController p_controller) {
+	public End_screen(Scene scene, Presistance_controller p_controller) {
 		root = new Group();
 		
 		winner_text = new Text("Winner\n"+Model.state.current_player.name);
