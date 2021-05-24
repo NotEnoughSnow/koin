@@ -31,10 +31,11 @@ public class JAXBHelper {
             throw e;
         }
     }
-
+ 
     /**
      * Deserializes an object from XML.
-     *
+     * 
+     * @param <T> type of clazz
      * @param clazz the class of the object
      * @param is the {@code InputStream} to read from
      * @return the resulting object
