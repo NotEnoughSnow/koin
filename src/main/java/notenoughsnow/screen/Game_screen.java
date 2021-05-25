@@ -76,14 +76,14 @@ public class Game_screen implements Screen {
 			public void handle(Event event) {
            
             	
-            	//TODO unit tests
+            	
             	t_controller.end_turn_view();
             	t_controller.end_turn();
             	
             	next_turn_button.setDisable(true);
             	Model.state.moves_played++;
             	 
-            	//TODO unit tests
+            	
             	if(t_controller.check_game_goal()) {
             		p_controller.save();
                     scene.setRoot(new End_screen(scene, p_controller).getRoot());
