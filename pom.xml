@@ -6,7 +6,7 @@
     <artifactId>koin</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
-    <description>Puzzle game implemented in JavaFX based on the Model-View-Controller (MVC) architectural pattern.</description>
+    <description>A simple Java game made with JavaFX based on the Model-View-Controller (MVC) architectural pattern.</description>
     <developers>
         <developer>
             <name>Mraidi Mohamed Amin</name>
@@ -15,6 +15,9 @@
             <organizationUrl>https://inf.unideb.hu/</organizationUrl>
         </developer>
     </developers>
+    <scm>
+        <developerConnection>scm:git:https://github.com/NotEnoughSnow/koin.git</developerConnection>
+    </scm>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
@@ -57,18 +60,6 @@
 			<version>3.0.0</version>
 			<scope>compile</scope>
 		</dependency>
-        <dependency>
-            <groupId>com.google.inject.extensions</groupId>
-            <artifactId>guice-persist</artifactId>
-            <version>5.0.1</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.gluonhq</groupId>
-            <artifactId>ignite-guice</artifactId>
-            <version>1.2.0</version>
-            <scope>compile</scope>
-        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
