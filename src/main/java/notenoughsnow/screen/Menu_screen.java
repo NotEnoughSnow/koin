@@ -18,12 +18,25 @@ import notenoughsnow.model.Model;
 import notenoughsnow.model.Player;
 import notenoughsnow.util.Screen;
 
+/**
+ * Menu Screen.
+ * @see Screen
+ * @see notenoughsnow.screen
+ * 
+ * @author notenoughsnow
+ *
+ */
 public class Menu_screen implements Screen {
-	
+
 	private Group root;
 
 
-	
+	/**
+	 * Creates a game screen instance.
+	 * 
+	 * @param scene parent scene.
+	 * @param p_controller Persistence controller.
+	 */
 	public Menu_screen(Scene scene, Persistence_controller p_controller) {
 		root = new Group();
 		

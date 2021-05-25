@@ -21,36 +21,29 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeAll;
 
-class StateTest {
+class StateInit {
  
     
 	@BeforeAll
     static void init() {
 		
-		
-		StateInit.init();
-    }
-	
-    @Test
-    void size_test() {
-    	assertEquals(Model.state.coins.size(),5);
-   
+    	Coin_controller c_controller = new Coin_controller();
     	
-    }
-    
-    @Test
-    void compare_test() {
-    	
-    	assertEquals(Model.state.coins.get(1).compareTo(Model.state.coins.get(0)),1);
-    	assertEquals(Model.state.coins.get(2).compareTo(Model.state.coins.get(1)),1);
-    	assertEquals(Model.state.coins.get(3).compareTo(Model.state.coins.get(2)),1);
-    	assertEquals(Model.state.coins.get(4).compareTo(Model.state.coins.get(3)),1);
+    	Model.state = new Game_state();
+    	Model.turn = new Turn_state();
+ 
+   	 	c_controller.add_coin(new Coin(1));
+   	 	c_controller.add_coin(new Coin(2));
+   	 	c_controller.add_coin(new Coin(3));
+   	 	c_controller.add_coin(new Coin(4));
+   	 	c_controller.add_coin(new Coin(5));
+   	 	
+   	    c_controller.flip_selected(Model.state.coins.get(1));
+   	 	c_controller.flip_selected(Model.state.coins.get(4));
+   	 	c_controller.flip_selected(Model.state.coins.get(3));
 
-    	assertEquals(Model.state.coins.get(2).compareTo(Model.state.coins.get(4)),-1);
-    	
-    	assertEquals(Model.state.coins.get(1).compareTo(Model.state.coins.get(1)),0);
-    	
+   	 	
+ 	
     }
-    
 
 }

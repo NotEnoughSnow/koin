@@ -15,7 +15,11 @@ import notenoughsnow.state.Coin;
  */
 public class Turn_controller {
 	 
-	
+	/**
+	 * Updates the next_turn_text component each turn.
+	 * 
+	 * @param player_turn_text Text component to be updated.
+	 */
 	public void update_turn_text(Text player_turn_text) {
 		
 		player_turn_text.setText("Player "+Model.state.current_player.name+"'s turn!");

@@ -11,9 +11,15 @@ package notenoughsnow.model;
  */
 public class Player {
 	
-	
+	/**
+	 * Variable to store player name.
+	 */
 	public String name;
 	
+	/**
+	 * Creates a Player with the given name.
+	 * @param name the given name.
+	 */
 	public Player(String name) {
 		this.name = name;
 	}
@@ -24,6 +30,13 @@ public class Player {
 		
 		return this.name.equals(o.name);
 	}
+
+	@Override
+	public String toString() {
+		return name;
+	}
+	
+	
 	
 	
 	

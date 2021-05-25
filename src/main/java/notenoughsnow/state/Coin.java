@@ -15,14 +15,28 @@ package notenoughsnow.state;
   */
 public class Coin implements Comparable<Coin>{
 
+	   /**
+	    * view for the coin.
+	    */
        public ImageView img;
-
+       /**
+	    * heads/tails variable.
+	    */
        public boolean tails;
+       /**
+	    * variable to indicate if coin is selected.
+	    */
        public boolean selected;
-       
+       /**
+	    * coin position in the state list.
+	    */
        public int position;
 
-	
+       /**
+        * Creates a new coin.
+        * 
+        * @param i it's index.
+        */
        public Coin(int i) {
   
     	  position = i;

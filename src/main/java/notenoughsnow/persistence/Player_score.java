@@ -13,11 +13,18 @@ import notenoughsnow.model.Player;
 public class Player_score implements Comparable<Player_score>{
 	
 	
-
-	public Player player;
-	public int score;
 	/**
-	 * Creates a new player instance
+	 * Stored Player.
+	 */
+	public Player player;
+	
+	/**
+	 * Assigned Score.
+	 */
+	public int score;
+	
+	/**
+	 * Creates a new player instance.
 	 * 
 	 * @param player mainly through {@code player.name}
 	 */

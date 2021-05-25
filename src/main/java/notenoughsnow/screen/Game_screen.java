@@ -18,10 +18,24 @@ import notenoughsnow.model.Model;
 import notenoughsnow.state.Coin;
 import notenoughsnow.util.Screen;
 
+/**
+ * Game Screen.
+ * @see Screen
+ * @see notenoughsnow.screen
+ * 
+ * @author notenoughsnow
+ *
+ */
 public class Game_screen implements Screen {
-	
+
 	private Group root;
 	
+	/**
+	 * Creates a game screen instance.
+	 * 
+	 * @param scene parent scene.
+	 * @param p_controller Persistence controller.
+	 */
 	public Game_screen(Scene scene,Persistence_controller p_controller) {
 		
 		root = new Group();

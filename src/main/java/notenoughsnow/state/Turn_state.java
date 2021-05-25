@@ -15,9 +15,14 @@ import java.util.ArrayList;
  */
 public class Turn_state {
 	 
-	
+	/**
+	 * Selected coins list.
+	 */
 	public ArrayList<Coin> selected;
 	
+	/**
+	 * Initializes selected list.
+	 */
 	public Turn_state() {
 		selected = new ArrayList<Coin>();
 		

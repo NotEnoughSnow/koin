@@ -1,6 +1,6 @@
 
 /**
- * Model package to keep model related classes
+ * Model package to keep model related classes.
  * 
  */
 

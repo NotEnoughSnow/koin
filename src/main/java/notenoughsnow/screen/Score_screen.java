@@ -22,12 +22,25 @@ import notenoughsnow.persistence.Player_score;
 import notenoughsnow.persistence.Session;
 import notenoughsnow.util.Screen;
 
+/**
+ * Score Screen.
+ * @see Screen
+ * @see notenoughsnow.screen
+ * 
+ * @author notenoughsnow
+ *
+ */
 public class Score_screen implements Screen {
-	
+
 	private Group root;
 
 
-	
+	/**
+	 * Creates a score screen instance.
+	 * 
+	 * @param scene parent scene.
+	 * @param p_controller Persistence controller.
+	 */
 	public Score_screen(Scene scene, Persistence_controller p_controller) {
 		root = new Group();
 		

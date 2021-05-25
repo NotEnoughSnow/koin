@@ -31,8 +31,8 @@ public class Persistence_controller {
  
 	/**
 	 * 
-	 * Saves current {@link Session} to directory as {@code save.xml}
-	 * Stores number of moves, player names and winner name
+	 * Saves current {@link Session} to directory as {@code save.xml}.
+	 * Stores number of moves, player names and winner name.
 	 *  
 	 */
 	public void save() {

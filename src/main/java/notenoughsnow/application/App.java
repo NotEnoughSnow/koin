@@ -15,12 +15,18 @@ import notenoughsnow.state.Coin_view;
 
 
 /**
- * Responsible for initializing the stage, scene and window of the application
+ * Responsible for initializing the stage, scene and window of the application.
  *
  */
 public class App extends Application {
 	
+	/**
+	 * Global variable for window width.
+	 */
 	public static final int  width = 1100;
+	/**
+	 * Global variable for window height.
+	 */
 	public static final int height = 800;
  
     

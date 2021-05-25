@@ -14,11 +14,24 @@ import notenoughsnow.model.Player;
  */
 public class Game_state {
 	
-	
+	/**
+	 * The state List.
+	 */
 	public ArrayList<Coin> coins;
+	
+	/**
+	 * Current player.
+	 */
 	public Player current_player;
+	
+	/**
+	 * Moves Played.
+	 */
 	public int moves_played;
 
+	/**
+	 * Initializes the state list.
+	 */
 	public Game_state() {
 		coins = new ArrayList<Coin>();
 		

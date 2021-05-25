@@ -14,11 +14,25 @@ import notenoughsnow.controller.Persistence_controller;
 import notenoughsnow.model.Model;
 import notenoughsnow.util.Screen;
 
+/**
+ * End Screen.
+ * @see Screen
+ * @see notenoughsnow.screen
+ * 
+ * @author notenoughsnow
+ *
+ */
 public class End_screen implements Screen {
 	
+
 	private Group root;
  
-	
+	/**
+	 * Creates an end screen instance.
+	 * 
+	 * @param scene parent scene.
+	 * @param p_controller Persistence controller.
+	 */
 	public End_screen(Scene scene, Persistence_controller p_controller) {
 		root = new Group();
 

@@ -12,25 +12,32 @@ import notenoughsnow.state.Turn_state;
  *
  */
 public class Model {
-	
+	/**
+	 * Game state.
+	 */
 	public static Game_state state;
+	/**
+	 * Turn state.
+	 */
 	public static Turn_state turn;
 	
+	/**
+	 * First Player.
+	 */
 	public static Player player_one;
+	/**
+	 * Second Player.
+	 */
 	public static Player player_two;
 	
 	
-	
+	/**
+	 * Used for initializing state variables.
+	 */
 	public Model() {
 		
 		state = new Game_state();
 		turn = new Turn_state();
-		
-		player_one = new Player("");
-		player_two = new Player("");
-		
-		
-		state.current_player = player_one;
 
 	}
 

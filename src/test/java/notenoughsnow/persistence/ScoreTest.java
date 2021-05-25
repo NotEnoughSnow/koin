@@ -1,4 +1,4 @@
-package notenoughsnow.state;
+package notenoughsnow.persistence;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,6 +16,7 @@ import notenoughsnow.controller.Coin_controller;
 import notenoughsnow.controller.Persistence_controller;
 import notenoughsnow.controller.Turn_controller;
 import notenoughsnow.model.Model;
+import notenoughsnow.model.Player;
 import notenoughsnow.persistence.Persistence;
 import notenoughsnow.persistence.Session;
 import notenoughsnow.screen.Menu_screen;
@@ -30,21 +31,28 @@ import java.io.OutputStream;
 
 import org.junit.jupiter.api.BeforeAll;
 
-class FileTest {
+class ScoreTest {
  
 	
 	 @Test
-	    void excpetion_test() {
+	    void playerScore_test() {
 		 
-	    	
-	    	assertThrows(JAXBException.class, () ->JAXBHelper.fromXML(getClass(), new FileInputStream("save.xml")));
-	    	assertThrows(IOException.class, () ->JAXBHelper.fromXML(Persistence.class, new FileInputStream("sample.xml")));
+		 
+		 Player p = new Player("John");
+		 Player p2 = new Player("Rone");
+		 
+		 Player_score ps = new Player_score(p);
+		 Player_score ps2 = new Player_score(p);
+		 
+		 ps2.score++;
+		 
+		 assertEquals(ps2.score,2);
+		 assertNotEquals(p,p2);
+		 assertEquals(ps.compareTo(ps2),1);
+		 assertEquals(ps.toString(),"John( 1 )");
+		 
+		 assertEquals(ps,new Player_score(new Player("John")));
 
-
-		    Persistence_controller p = new Persistence_controller();
-	    	p.load();
-	    	
-	    	assertNotNull(Session.session);
 	    	
 	    }
 

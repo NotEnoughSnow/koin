@@ -13,6 +13,9 @@ package notenoughsnow.persistence;
  */
 public class Session {
 	
+	/**
+	 * Session variable to hold loaded and current game data.
+	 */
     public static Persistence session;
     
 
